@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no" />
+  <title>*UNFUZZED* ArcGIS API Combined Map</title>
+  <link rel="icon" href="icon.png">
+
+  <link rel="stylesheet" type="text/css" href="main.css">
+  <link rel="stylesheet" href="https://js.arcgis.com/4.16/esri/css/main.css">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"></script>
+  <!-- For csv parsing -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.0/papaparse.min.js"></script>
+  
+  <script src="https://js.arcgis.com/4.16/"></script>
+  <script src="map.js"></script>
+</head>
+
+<body>
+  <div id="viewDiv"></div>
+  <div id="legendDiv" class="esri-widget">
+    <h3>Legend</h3>
+    <h4>Selected Data Type Frequency</h4>
+    <ul>
+      <li>
+        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8">
+            <circle fill="plum" stroke="black" cx="4" cy="4" r="4"></circle>
+        </svg>
+        51%-100%
+      </li>
+      <li>
+        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8">
+            <circle fill="red" stroke="black" cx="4" cy="4" r="4"></circle>
+        </svg>
+        41%-50%
+      </li>
+      <li>
+        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8">
+            <circle fill="dodgerblue" stroke="black" cx="4" cy="4" r="4"></circle>
+        </svg>
+        31%-40%
+      </li>
+      <li>
+        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8">
+            <circle fill="yellow" stroke="black" cx="4" cy="4" r="4"></circle>
+        </svg>
+        21%-30%
+      </li>
+      <li>
+        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8">
+            <circle fill="lightgreen" stroke="black" cx="4" cy="4" r="4"></circle>
+        </svg>
+        11%-20%
+      </li>
+      <li>
+        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8">
+            <circle fill="orange" stroke="black" cx="4" cy="4" r="4"></circle>
+        </svg>
+        6%-10%
+      </li>
+      <li>
+        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8">
+            <circle fill="lightgray" stroke="black" cx="4" cy="4" r="4"></circle>
+        </svg>
+        &leq;5%
+      </li>
+    </ul>
+  </div>
+  <div id="infoDiv" class="esri-widget">
+    <div id="fuzz-warning" style="color: red"><h2>VIEWING UNFUZZED SITES</h2></div>
+    <label for="opacity"><b>Opacity</b></label>
+    <div id="opacity" class="slider"></div>
+    <div id="sym-toggle">
+      <b>Data Field:</b><br>
+      <input type="radio" name="sym-field" value="sym_design">Symmetry Design</input>
+      <input type="radio" name="sym-field" value="sym_struc" checked="checked">Symmetry Structure</input>
+      <input type="radio" name="sym-field" value="band_color">Band Color</input>
+      <input type="radio" name="sym-field" value="type">Ceramic Type</input>
+    </div>
+    <div id="drop-down">
+      <b>Data Type:</b><br>
+      <select id="symmetry-type" class="esri-widget">
+        <option value="All" selected>All</option>
+      </select>
+    </div>
+    <b>Query by Year:</b><br>
+    Sites will be displayed if the selected date is within their date range. <br>
+    <label for="time">Year:</label>
+    <div id="time" class="slider"></div>
+    <input type="checkbox" id="ignoreTime">
+    <label for="ignoreTime">Show all sites regardless of year</label>
+    <div id="results" class="esri-widget"></div>
+  </div>
+  <div id="chartPanel"><canvas id="chart" class="chart"></canvas></div>
+</body>
+
+</html>
