@@ -14,6 +14,8 @@ LAT_PER_KM = 5.92260282/658
 #This one is not true, but you can kiss my confident little assertions
 LON_PER_KM = 6.898664/((606+651)/2)
 
+inner_radius = 5
+outer_radius = 10
 
 def is_num(s, nanAllowed=False):
     try:
@@ -82,7 +84,7 @@ if has_sites:
     print(len(data), "rows and", len(new_sites), "sites")
 
     for k, v in new_sites.items():
-        hyp = 0.5+rd.random()*0.5
+        hyp = inner_radius+rd.random()*(outer_radius-inner_radius)
         theta = math.tau * rd.random()
         d_lat = hyp*math.sin(theta)*LAT_PER_KM
         d_lon = hyp*math.cos(theta)*LON_PER_KM
@@ -103,7 +105,7 @@ else:
             lat = float(row[lat_index])
             lon = float(row[lon_index])
 
-            hyp = 0.5+rd.random()*0.5
+            hyp = inner_radius+rd.random()*(outer_radius-inner_radius)
             theta = math.tau * rd.random()
             d_lat = hyp*math.sin(theta)*LAT_PER_KM
             d_lon = hyp*math.cos(theta)*LON_PER_KM
