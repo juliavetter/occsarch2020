@@ -313,9 +313,11 @@ require([
       map: map,
       center: [-108.7, 34.3],
       zoom: 6,
+      /*
       constraints: {
         maxZoom: 9,
       },
+      */
     });
   
     var featureLayerView;
