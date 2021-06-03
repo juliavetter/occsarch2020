@@ -200,7 +200,7 @@ require([
       },
     });
 
-    const dataURL = 'https://services5.arcgis.com/yVCUkdcXCabMuIIK/arcgis/rest/services/11_13_Fuzzed_Sites/FeatureServer';
+    const dataURL = 'https://services5.arcgis.com/yVCUkdcXCabMuIIK/arcgis/rest/services/table_of_sites_combined_fuzz_510km/FeatureServer';
 
     var dataLayer = new FeatureLayer({
       url: dataURL,
